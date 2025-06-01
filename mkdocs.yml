@@ -1,0 +1,81 @@
+site_name: LotusNotus Blog
+site_url: https://lotusnotus.com
+theme:
+  name: material
+  palette: 
+    scheme: default
+    primary: white
+    accent: deep orange
+  font:
+    text: Roboto
+    code: Roboto Mono
+  logo: images/meta/ln_logo.png
+  features:
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - navigation.sections
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+extra_css:
+  - /css/extra.css
+extra:
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognise your repeat visits and preferences, 
+      and to help us understand how our blog is performing. 
+      We may use third-party tools for this purpose. With your consent, 
+      you’re helping us improve the experience for all our readers.
+    actions:
+      - accept
+      - reject
+  analytics:
+    provider: google
+    property: G-GEX4QH5QYC
+copyright: >
+  Copyright &copy; 2013 - 2025 Serdar Basegmez – <a href="#__consent">Change cookie settings</a>
+plugins:
+  - blog:
+      enabled: true
+      blog_dir: .
+      post_date_format: full
+      post_url_date_format: yyyy/MM
+      post_url_format: '{date}/{slug}/'
+      post_slugify_separator: "-"
+      categories_slugify_separator: "-"
+      archive_name: Older Posts
+  - meta:
+      enabled: true
+  - rss:
+      enabled: true
+      match_path: docs/posts/.*
+      date_from_meta:
+        as_creation: date
+      categories:
+        - categories
+        - tags
+  - privacy:
+      enabled: true
+      concurrency: 1
+      cache: true
+      assets: true
+      assets_fetch: true
+  - search:
+      lang: en
+      separator: '[\s\-]+'
+  - social:
+      enabled: true
+      cards_dir: docs/images/cards
+  - tags:
+      enabled: true
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
