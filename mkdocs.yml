@@ -1,0 +1,113 @@
+site_name: LotusNotus Blog
+site_url: https://lotusnotus.com
+site_author: Serdar Basegmez
+site_description: >
+  LotusNotus is my personal Blog about IBM/HCL/Lotus Notes, Domino, and related technologies.
+copyright: >
+  Copyright &copy; 2013 - 2025 Serdar Basegmez – <a href="#__consent">Change cookie settings</a>
+repo_name: sbasegmez/lotusnotus
+repo_url: https://github.com/sbasegmez/lotusnotus
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  palette: 
+    scheme: default
+    primary: white
+    accent: deep orange
+  font:
+    text: Roboto
+    code: Roboto Mono
+  logo: images/meta/ln_logo.png
+  features:
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - search.share
+extra_css:
+  - /css/extra.css
+extra:
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognise your repeat visits and preferences, 
+      and to help us understand how our blog is performing. 
+      We may use third-party tools for this purpose. With your consent, 
+      you’re helping us improve the experience for all our readers.
+    actions:
+      - accept
+      - reject
+  social:
+    - icon: fontawesome/brands/github
+      name: Serdar Basegmez on GitHub
+      link: https://github.com/sbasegmez
+    - icon: fontawesome/brands/bluesky
+      name: Serdar Basegmez on Bluesky
+      link: https://bsky.app/profile/serdar.uk
+    - icon: fontawesome/brands/linkedin
+      name: Serdar Basegmez on LinkedIn
+      link: https://www.linkedin.com/in/sbasegmez/
+    - icon: fontawesome/brands/twitter
+      name: Serdar Basegmez on Twitter
+      link: https://twitter.com/serdar_basegmez
+    - icon: fontawesome/brands/speaker-deck
+      name: Serdar Basegmez on Speaker Deck
+      link: https://speakerdeck.com/sbasegmez
+  analytics:
+    provider: google
+    property: G-GEX4QH5QYC
+plugins:
+  - blog:
+      enabled: true
+      blog_dir: .
+      post_date_format: long
+      post_url_date_format: yyyy/MM
+      post_url_format: '{date}/{slug}/'
+      post_slugify_separator: "-"
+      categories_slugify_separator: "-"
+      archive_name: Older Posts
+      archive_toc: true
+      blog_toc: true
+  - glightbox:
+      enabled: true
+  - meta:
+      enabled: true
+  - rss:
+      enabled: true
+      match_path: docs/posts/.*
+      date_from_meta:
+        as_creation: date
+      categories:
+        - categories
+        - tags
+  - privacy:
+      enabled: true
+      concurrency: 1
+      cache: true
+      assets: true
+      assets_fetch: true
+  - search:
+      lang: en
+      separator: '[\s\-]+'
+  - tags:
+      enabled: true
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - footnotes
+  - tables
+  - pymdownx.tabbed
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences

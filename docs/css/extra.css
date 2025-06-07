@@ -1,0 +1,89 @@
+.md-header__button.md-logo img {
+    margin: -8px 0px;
+    height: auto;
+}
+
+.md-content--post article.md-content__inner img {
+  border-left: 2px solid #EEE;
+  border-top: 2px solid #EEE;
+  border-right: 1px solid #999;
+  border-bottom: 1px solid #999;
+
+  padding: 4px;
+}
+
+/* Fix for the logo in the left side */
+.md-nav__title .md-nav__button.md-logo img , .md-nav__title .md-nav__button.md-logo svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.4rem;
+}
+@media screen and (max-width: 76.2344em) {
+  .md-nav--primary .md-nav__title {
+    height: 4rem;
+  }
+}
+/************/
+
+/* Header and nav social: */
+.md-header__social {
+  display:none; 
+}
+
+.md-header__social .md-social__link, 
+.md-nav__social .md-social__link {
+  height:auto;
+}
+
+@media screen and (min-width:60em) {
+  .md-header__social {
+    display:block;
+    margin-left:1rem;
+    max-width:11.7rem;
+    width:11.7rem
+  }
+}
+@media screen and (min-width:76.25em) {
+  .md-header__social {
+    margin-left:1.4rem
+  }
+}
+
+.md-nav__social {
+  display:none
+}
+
+@media screen and (max-width:59.984375em) {
+  .md-nav__social {
+    background-color:var(--md-primary-fg-color--dark);
+    color:var(--md-primary-bg-color);
+    display:block;
+    padding:0 .2rem
+  }
+}
+
+/************/
+
+.md-footer-meta__source .md-source__repository {
+  max-width: none;
+}
+
+/* Blog post stuff */
+.md-post--excerpt h2 {
+  font-weight: bolder;
+}
+
+.md-post--excerpt .md-post__header {
+    border-top: 1px solid var(--md-primary-fg-color--dark);
+    flex-flow: column;
+    align-items: end;
+}
+
+article.md-typeset h1 {
+  margin-bottom: 0.75em;
+}
+
+/* Remove annoying white shadow on primary nav title */
+.md-nav--primary .md-nav__title {
+  box-shadow: none;
+}
