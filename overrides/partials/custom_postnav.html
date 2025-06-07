@@ -1,0 +1,34 @@
+{# Custom post navigation - Another good idea but didn't resonate. #}
+
+<div class="custom-postnav">
+  <div class="custom-postnav__item">
+    {% if page.next_page %}
+    <a href="{{ page.next_page.url | url }}" class="custom-postnav__link" title="{{ page.next_page.title }}">
+      {% include ".icons/material/arrow-left-bold-circle-outline.svg" %}
+    </a>
+    {% else %}
+    <span class="custom-postnav__no-link">
+      {% include ".icons/material/arrow-left-bold-circle-outline.svg" %}
+    </span>
+    {% endif %}
+    </span>
+  </div>
+
+  <div class="custom-postnav__item">
+    <a href="{{ page.parent.url | url }}" class="custom-postnav__link" title="{{ lang.t('blog.index') }}">
+      {% include ".icons/material/home-circle-outline.svg" %}
+    </a>
+  </div>
+
+  <div class="custom-postnav__item">
+    {% if page.previous_page %}
+    <a href="{{ page.previous_page.url | url }}" class="custom-postnav__link" title="{{ page.previous_page.title }}">
+      {% include ".icons/material/arrow-right-bold-circle-outline.svg" %}
+    </a>
+    {% else %}
+    <span class="custom-postnav__no-link">
+      {% include ".icons/material/arrow-right-bold-circle-outline.svg" %}
+    </span>
+    {% endif %}
+    </span>
+  </div>

@@ -1,3 +1,3 @@
-# Welcome to LotusNotus!
-
-
+---
+title: Home Page
+---
