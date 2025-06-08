@@ -63,6 +63,9 @@
 }
 
 /************/
+.md-footer-meta__source {
+  margin-top: 0.2rem;
+}
 
 .md-footer-meta__source .md-source__repository {
   max-width: none;
@@ -87,3 +90,36 @@ article.md-typeset h1 {
 .md-nav--primary .md-nav__title {
   box-shadow: none;
 }
+
+/* Footer source repository - When active on site */
+.md-source__repository--active .md-source__facts {
+  display: block;
+  font-size: .55rem;
+  gap: .4rem;
+  list-style-type: none;
+  margin: .2rem 0 0;
+  opacity: .75;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+
+}
+
+.md-footer .md-source__facts li.md-source__fact {
+  display: inline-block;
+  font-size: 0.6rem;
+  height: 0.9rem;
+  line-height: 0.6rem;
+  margin: 0px 5px; 0px 0px;
+  padding: 1px 0px 0px 0px;
+  width: auto;
+}
+
+.md-footer .md-source__facts li.md-source__fact:before {
+  margin-right: 3px;
+  height: .6rem;
+  width: .6rem;
+  vertical-align: bottom;
+} 
+/*********/
+

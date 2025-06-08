@@ -11,6 +11,8 @@ theme:
   name: material
   custom_dir: overrides
   language: en
+  icon:
+    repo: material/github
   palette: 
     scheme: default
     primary: white
