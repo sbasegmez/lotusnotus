@@ -28,7 +28,7 @@ theme:
     - search.highlight
     - search.share
 extra_css:
-  - /css/extra.css
+  - css/extra.css
 extra:
   consent:
     title: Cookie consent
