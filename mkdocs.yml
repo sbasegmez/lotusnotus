@@ -18,6 +18,7 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
+  favicon: images/meta/favicon.ico
   logo: images/meta/ln_logo.png
   features:
     - content.code.copy
