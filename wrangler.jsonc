@@ -1,0 +1,8 @@
+{
+  "name": "lotusnotus",
+  "compatibility_date": "2025-06-09",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./site"
+  }
+}
