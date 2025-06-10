@@ -40,11 +40,9 @@ We will first backup the databases we will modify: "*/LotusQuickr/lotusquickr/ma
 
 In addition, we will be changing values of some fields while working. So I suggest using a basic agent to make these changes. I am using [Dan Velasco's reusable agent](http://www.dominopower.com/issues/issue200003/reuse001) to do this. Create this agent in both databases. You need to disable the following line (in CreateFieldChoiceList routine) because there is no form in our databases:
 
-```
+```vbscript
 Set form = currentDB.GetForm ( formName )
 ```
-
-<br />
 
 <br />
 
@@ -93,7 +91,7 @@ Here, I am proud of myself because my solution is a piece of art :)))
 
 Open your designer, open **Resources.nsf** database and create a form named "**SkinEditor** ". Place single text field named "*TempBody* ". Make sure checking "Automatically enable Edit mode" in form properties. Put the following codes into QueryOpen and QuerySave events:
 
-```
+```vbscript
 Sub Queryopen(Source As Notesuidocument, Mode As Integer, Isnewdoc As Variant, Continue As Variant)
         Dim doc As NotesDocument
         Dim mime As NotesMimeEntity        
@@ -124,8 +122,6 @@ End Sub
 
 <br />
 
-<br />
-
 Now go to the design of "**Custom Skins** " folder. Change "Form Formula" as "**SkinEditor** ".
 
 We did it! We can edit html and css files on the Notes Client. Go to the "Custom Skins" folder, double click any skin component, do your edits and save...
@@ -138,14 +134,12 @@ We did it! We can edit html and css files on the Notes Client. Go to the "Custom
 
 - Landing page themes are not widget-based. So all html files are being used. For example the main landing page (the one contains my places) uses "**list.htm** "; Site administration uses "**page.htm** ", Time zone edit page uses "**edit.htm** ", etc. To find which page uses what, look at the html source when you are browsing the page. In the page source, find the text "*h_CurrentSkinType* ". You will both make sure it is using te right skin group and learn what page it is using.
 
-```
-.......
+```js
+//.......
 fieldNames.h_CurrentSkinName = 'h_SetupSkin2';
 fieldNames.h_CurrentSkinType = 'h_ListFolder';
-.......
+//.......
 ```
-
-<br />
 
 <br />
 

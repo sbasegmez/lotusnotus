@@ -27,7 +27,7 @@ Let's see a very simple case.
 
 We have a simple Custom Control:
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core">
 
@@ -44,10 +44,6 @@ We have a simple Custom Control:
 </xp:view>
 ```
 
-<br />
-
-<br />
-
 It's simple. We are selecting from a listbox and partial refresh will set the same value in the computed field. Let's use this twice in an XPage...
 
 ![Image:Multiple Custom Controls and Events aware of their owners...](../../images/imported/multiple-custom-controls-and-events-aware-of-their-owners-M2.gif)
@@ -62,7 +58,7 @@ It seems OK. Now I am selecting the second option in the first control.
 
 The problem is so obvious. We are using "viewScope.select" variable for both controls. So the solution is also obvious. We should use different variables for custom controls. This is a very common scheme, you define a property for the custom control (like uid) so you can refer different elements with different id's. I implemented the same scheme for this case.
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core">
 
@@ -81,10 +77,6 @@ The problem is so obvious. We are using "viewScope.select" variable for both con
 </xp:view>
 ```
 
-<br />
-
-<br />
-
 It works. Now we calculate which scope variable will be used...
 
 However, if you look at the calculation, you may see the calculation starts with "${...", not with "#{...". That means the value mapping is calculated '**during the page loading** ' process... This is important. It is similar using 'calculated' field names. It cannot be changed in runtime.
@@ -95,7 +87,7 @@ Suppose you placed this custom control into a view control... Somehow, you have 
 
 You cannot use these parameters in a view. Because, **at the loading phase, view and its entries does not exist** . If you are using repeat control, you may have a chance depending on your data source. But no chance with views.
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core"
         xmlns:xc="http://www.ibm.com/xsp/custom">
@@ -122,10 +114,6 @@ You cannot use these parameters in a view. Because, **at the loading phase, view
 </xp:view>
 ```
 
-<br />
-
-<br />
-
 The result:
 ![Image:Multiple Custom Controls and Events aware of their owners...](../../images/imported/multiple-custom-controls-and-events-aware-of-their-owners-M5.gif)
 
@@ -137,7 +125,7 @@ By old habits, I tried "this.getValue()" in the event but it failed. So I just d
 
 We modify our custom control as the following:
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core">
 
@@ -155,10 +143,6 @@ We modify our custom control as the following:
         </xp:text>
 </xp:view>
 ```
-
-<br />
-
-<br />
 
 You can see the added row there. "this" object is the event handler. Its parent gives us the component object and getValue() returns its value.
 

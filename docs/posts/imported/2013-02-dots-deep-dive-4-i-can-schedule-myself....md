@@ -27,7 +27,7 @@ Actually, this is in the wish list for the next version of DOTS. But we can do s
 
 Here is the code:
 
-```
+```java
 package org.openntf.news.playground.tasklets;
 
 import org.eclipse.core.runtime.CoreException;
@@ -72,9 +72,6 @@ public class CustomSchedule extends AbstractServerTaskExt {
 }
 ```
 
-<br />
-
-<br />
 
 So it's simple. There is a ServerTaskManager singleton object which manages all tasklets. We are using ".schedule(...)" method (luckily it's public).
 
@@ -89,20 +86,14 @@ Listening for transport dt_socket at address: 8001
 21.02.2013 13:55:43   [DOTS] (custom01) CustomSchedule: Runs every 10 - second
 ```
 
-<br />
-
-<br />
 
 You can use some kind of parameterization to customize your tasklet scheduling. For instance, I am planning to use this functionality for FeedMonster such that If there are only 5 feeds to be read, it's useless to receive new stories every 5 minutes. However, there is no way to 'unschedule' a tasklet. We'll find another trick for this.
 
 ServerTaskManager is a great object BTW. For instance;
 
-```
+```java
 stm.runTasklet("someTasklet", "argument1", "argument2");
 ```
 
-<br />
-
-<br />
 
 I didn't find it safe though. Since it doesn't submit a CommandInterpreter object, there might be a problem in error trapping. Noted to the list of feedbacks :)

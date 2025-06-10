@@ -38,9 +38,6 @@ Suppose we have a scheduled tasklet that will run every 5 seconds and wait for 7
 11.02.2013 11:10:45   [DOTS] (stest01) END: 5 secs
 ```
 
-<br />
-
-<br />
 
 As you see, since it runs longer than its schedule, it will pass 5 secs schedule and runs every 10 seconds.
 
@@ -66,9 +63,6 @@ Suppose we add a second tasklet here, to run every 2 seconds but wait for 1 secs
 11.02.2013 11:11:43   [DOTS] (stest01) START: 5 Secs
 ```
 
-<br />
-
-<br />
 
 This is a complicated scheduling right? They will never run at the sametime. If a tasklet should run in 15th, 20th, 25th and 30th seconds but there is another tasklet running at 20th and 30th seconds, it will just skip.
 
@@ -107,9 +101,6 @@ Now we will have one tasklet running every 5 secs and waiting for 30 secs (very 
 11.02.2013 11:49:41   [DOTS2] (stest01) START: 5 Secs
 ```
 
-<br />
-
-<br />
 
 Notice something different? They are running in different DOTS tasklet containers. 3-sec tasklet is running inside DOTS profile and the other one is running in DOTS2.
 

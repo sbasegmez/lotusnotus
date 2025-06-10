@@ -43,9 +43,6 @@ Beyond countless advantages, wiki has a very simple usage as well. A dummy user 
 
 ![Image:Corporate Social Software: Ingredients (4)](../../images/imported/corporate-social-software-ingredients-4-M2.gif)
 
-<br />
-
-<br />
 
 #### Blogs
 
@@ -65,9 +62,6 @@ You may have used Twitter, Friendfeed or at least Facebook status updates once i
 
 ![Image:Corporate Social Software: Ingredients (4)](../../images/imported/corporate-social-software-ingredients-4-M3.jpeg)
 
-<br />
-
-<br />
 
 Microblogging has taken its place among social software components lately. The most important advantage of microblog is to provide **instant** and **asyncronous** communication between co-workers. It is simple, quick and practical.
 
@@ -87,9 +81,6 @@ Nowadays, sharing bookmarks are mostly done by standard social networking tools 
 
 ![Image:Corporate Social Software: Ingredients (4)](../../images/imported/corporate-social-software-ingredients-4-M4.gif)
 
-<br />
-
-<br />
 
 An important problem with social bookmarks is that sometimes the link becomes broken in time. To avoid this, many content owners provide permanent links for their contents.
 
@@ -103,9 +94,6 @@ In fact, collaboration systems evolved not to share knowledge at the first place
 
 ![Image:Corporate Social Software: Ingredients (4)](../../images/imported/corporate-social-software-ingredients-4-M5.gif)
 
-<br />
-
-<br />
 
 Team spaces in Quickr and Activities in Connections are very good examples of task/duty management utilities in social software. They provide capabilities to share a common context (timelines, duties, documents etc.) for teams. Unlike project management, these utilities are useful to create ad-hoc plans, distribute tasks to team members and follow-up.
 

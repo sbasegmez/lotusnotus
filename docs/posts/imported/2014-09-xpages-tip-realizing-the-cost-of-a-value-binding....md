@@ -24,7 +24,7 @@ Basic value binding is straight forward. If you use a data source, scope variabl
 <!-- more -->
 Let's see an example here. Consider the following code, where we want to get some input via a combobox:
 
-```
+```xml
 <xp:div rendered="#{javascript:getValues().size!=0}">
        <xp:label
                value="Input:"
@@ -52,9 +52,6 @@ Let's see an example here. Consider the following code, where we want to get som
 </xp:div>
 ```
 
-<br />
-
-<br />
 
 We have a SSJS function "***getValues()*** " which generates a list combining some values from the form and maybe from the user name (I have overused it just to make my point obvious). Now, can you guess the number of times this function gets called?
 
@@ -70,7 +67,7 @@ For instance, you get a country, state and city inputs at the page, you compose 
 
 Before caching, you can at least decrease the number of times it gets called by using a panel. Let's change our code a little bit:
 
-```
+```xml
 <xp:panel
        id="div">
        <xp:this.dataContexts>
@@ -109,13 +106,10 @@ Before caching, you can at least decrease the number of times it gets called by 
 </xp:panel>
 ```
 
-<br />
-
-<br />
 
 Here, we have wrapped our div with a panel and which holds a dataContext element. This is going to be valid only within the boundries of this panel.
 
-> BTW, It's a really handy approach to use panels in such cases. Panels are 'independent islands' that can keep their own data sources. For instance, you may have a sub-sub-sub-sub-document somewhere in your page. You don't need to define a global data source in the parent view context. You can use a panel, define your data source within that panel and you can render it only when you need it, so your data source will not be processed if your panel is hidden.
+BTW, It's a really handy approach to use panels in such cases. Panels are 'independent islands' that can keep their own data sources. For instance, you may have a sub-sub-sub-sub-document somewhere in your page. You don't need to define a global data source in the parent view context. You can use a panel, define your data source within that panel and you can render it only when you need it, so your data source will not be processed if your panel is hidden.
 
 <br />
 
@@ -129,7 +123,7 @@ In a Partial refresh, it runs several times, because first, it needs to apply re
 
 After validation passed, it will update model values, which means that all validation results (also converter results) will be submitted. Of course it computed values again. Finally, it will render the response and compute everything one last time.
 
-> Runtime Value-binding computations happen differently depending on which type of attributes you are using or how you declare them. If you want to see the complete picture by JSF phases, read the fantastic blog series of my friend Paul Withers ([part1](http://www.intec.co.uk/understanding-partial-execution-part-one-refresh/), [part2](http://www.intec.co.uk/understanding-partial-execution-part-two-execution/), [part3](http://www.intec.co.uk/understanding-partial-execution-part-three-jsf-lifecycle/)). This blog series is particularly important for knowing best practices on using different value bindings in different declarations and using partial execution on action elements.
+Runtime Value-binding computations happen differently depending on which type of attributes you are using or how you declare them. If you want to see the complete picture by JSF phases, read the fantastic blog series of my friend Paul Withers ([part1](http://www.intec.co.uk/understanding-partial-execution-part-one-refresh/), [part2](http://www.intec.co.uk/understanding-partial-execution-part-two-execution/), [part3](http://www.intec.co.uk/understanding-partial-execution-part-three-jsf-lifecycle/)). This blog series is particularly important for knowing best practices on using different value bindings in different declarations and using partial execution on action elements.
 
 <br />
 

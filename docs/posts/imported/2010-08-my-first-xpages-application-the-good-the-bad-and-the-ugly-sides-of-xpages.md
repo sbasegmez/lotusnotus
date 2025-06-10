@@ -66,17 +66,15 @@ Validation of captcha test is one complexity. Because there is a problem of docu
 
 ![Image:My first XPages application: The good, the bad and the ugly sides of XPages](../../images/imported/my-first-xpages-application-the-good-the-bad-and-the-ugly-sides-of-xpages-M2.gif)
 
-```
-
+```java
 result=getComponent("fieldToBeValidated");
 
 // do your tests...
 
 if(testFailed) {
-     result.setValid(false);  // Validation failed for this field
+     result.setValid(false);      // Validation failed for this field
      return "Test failed... Use your math skills...";        // Return the error message.        
 }
-
 ```
 
 <br />

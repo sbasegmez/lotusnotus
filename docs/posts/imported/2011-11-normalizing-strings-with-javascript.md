@@ -25,10 +25,6 @@ DominoBlog template is using a simple formula for this:
 @ReplaceSubstring(@ReplaceSubstring(@ReplaceSubstring(pagename;"?":"&":"@":"£":"$":"%":"^":"<":">":"*":"/":"'":"#":"~":"(":")":"+":"=":"!":";":"\"":":":",":"|":"\\";"");"--":" - ":" ";"-");" - ":"--":"---";"-")
 ```
 
-<br />
-
-<br />
-
 This simple formula works in many times if you are living in USA :)
 
 What missing is normalization. I mean, if your title contains accented characters (like Ş, İ, é, ã, etc.) they have to be normalized somehow.
@@ -39,7 +35,7 @@ Of course, if it's Java, it would not handle the famous little dotless i (ı) ch
 
 Do not underestimate this dotless i problem, it would be [too dangerous](http://gizmodo.com/382026/a-cellphones-missing-dot-kills-two-people-puts-three-more-in-jail)!!!
 
-```
+```js
 function convert2Uri(name) {
  var result:String=name.toLowerCase();
  var pattern:java.util.regex.Pattern;

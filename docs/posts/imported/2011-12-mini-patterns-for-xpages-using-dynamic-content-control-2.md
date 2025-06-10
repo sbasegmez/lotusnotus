@@ -56,7 +56,7 @@ The mother page is still there (look at the time). Only container has been refre
 ![Image:Mini-Patterns for XPages: Using Dynamic Content Control (2)](../../images/imported/mini-patterns-for-xpages-using-dynamic-content-control-2-M6.gif)
 The page has been reloaded. The mother page and the container has been reloaded at the same time. We did this using Dynamic Content control. This is how:
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
      <xe:dynamicContent id="dynamicContent1" useHash="true">
@@ -71,9 +71,6 @@ The page has been reloaded. The mother page and the container has been reloaded 
 </xp:view>
 ```
 
-<br />
-
-<br />
 
 The first container inside the dynamic content tag (the control outside facets) will be shown default with empty url extension. The others will be placed inside facets. In the above example, you may call the panel with 'hash2' key by '...#content=hash2' url...
 

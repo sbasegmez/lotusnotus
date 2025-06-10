@@ -32,10 +32,10 @@ It contains a custom control and a script library (SSJS). You may simply import 
 
 The custom control also supports multi-language. Just update the list of languages supported and setStrings() function for custom strings...
 
-```
-.....
+```js
+// .....
 var LANGUAGES=["en","tr"]; // Languages supported. First is default...
-.......
+// .......
 this.setStrings=function() {
 
 captchaTexts["en"]=["zero","one", ... ,"twentyfour","twentyfive"];
@@ -56,9 +56,6 @@ switch(captchaLanguage) {
 }
 ```
 
-<br />
-
-<br />
 
 **UPDATE:**
 I noticed there is a problem with serialization in pre-8.5.2 versions. So I uploaded a different version as R2.0 [here](http://www.developi.com/_files/CaptchaSample_R2.0_201105.zip). Notice that the object structure and custom control implementation has been changed here and you should see different places for multilingual texts...

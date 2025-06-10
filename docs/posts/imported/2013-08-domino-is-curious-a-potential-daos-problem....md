@@ -40,9 +40,6 @@ At this point I noticed something very strange.
 ...
 ```
 
-<br />
-
-<br />
 
 There were lots of similar database records from the recycle bin which is supposed to be empty... So I have looked at that folder via command prompt and yes, those files really exist! After a research, I noticed the problem. Domino is looking for the NSF and NTF files outside the Data folder (even in recycle bin) to be handled by DAOS.
 
@@ -87,6 +84,3 @@ Solution for the problem is being more organized for daily operations. Here are 
 * Domino servers should not use file-level antivirus scanners or any other software that may lock files. If you have to use a real time scanner, use exclusions like explained [here](http://www.bleedyellow.com/blogs/lotusnut/entry/dominogofaster?lang=en_gb) and [here](http://www-01.ibm.com/support/docview.wss?uid=swg21417504).
 * Always backup DAOS folder :)
 
-<br />
-
-<br />

@@ -57,15 +57,13 @@ If you have enabled aggregator for your XPages application, the render phase wil
 
 Here are the list of all options to tweak this behavior:
 
-```
-xsp.resources.aggregate : Should be true to enable minifier.
-xsp.resources.aggregate.dojo : If false, Dojo resources will not be aggregated.
-xsp.resources.aggregate.css : If false, CSS resources (components and plugins) will not be aggregated.
-xsp.resources.aggregate.appjs : If false, JavaScript files of XPage or Theme will not be aggregated.
-xsp.resources.aggregate.appcss : If false, CSS files of XPage or Theme will not be aggregated.
-```
-
-<br />
+| Parameter  | Description   |
+| ---- | ---- |
+| **xsp.resources.aggregate**: | Should be true to enable minifier.|
+| **xsp.resources.aggregate.dojo**: | If false, Dojo resources will not be aggregated.|
+| **xsp.resources.aggregate.css**: | If false, CSS resources (components and plugins) will not be aggregated.|
+| **xsp.resources.aggregate.appjs**: | If false, JavaScript files of XPage or Theme will not be aggregated.|
+| **xsp.resources.aggregate.appcss**: | If false, CSS files of XPage or Theme will not be aggregated.|
 
 Now we know that minifier provides a great performance gain. But there is the special case for Dojo. There is no 'One .JS file for everything' in Dojo. Also, XSP doesn't really know which modules will be needed because Dojo uses AMD, right?
 
@@ -73,7 +71,7 @@ Here, XPages solve this problem very well. When XPages aggregate resources, it c
 
 Now, there is one trick: All these processes happens only once, when you load the page for the first time. Subsequent requests (partial refreshes) will not generate aggregated files. What does it mean? Consider such a scenario:
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view
     xmlns:xp="http://www.ibm.com/xsp/core"
@@ -113,7 +111,7 @@ Unfortunately, there is nothing much to do in such a scenario. Some components s
 
 It would be pretty ugly solution but you can always preload Dojo modules manually. For the above example,
 
-```
+```xml
        <xp:this.resources>
              <xp:dojoModule name="dijit.form.ComboBox"></xp:dojoModule>
              <xp:dojoModule name="dijit.form.CurrencyTextBox"></xp:dojoModule>
@@ -121,15 +119,12 @@ It would be pretty ugly solution but you can always preload Dojo modules manuall
      </xp:this.resources>
 ```
 
-<br />
 
 This will preload dojo modules whether they are rendered or not. However, you have to be careful, because the Renderer might change with the theme. Some of these components have separate renderers for Bootstrap or OneUI 3.02. To find which modules or files are requested by components, you can use the following snippet:
 
-```
+```xml
 <xp:this.afterRenderResponse><![CDATA[#{javascript:print(@Implode(view.getEncodeResources(), "\n"))}]]></xp:this.afterRenderResponse>
 ```
-
-<br />
 
 It's also possible to develop a preloader engine but the problem is that you can't detect default Dojo modules to be loaded by usual Java. Dojo Modules inside the Renderer are declared on a protected method, where you can't access it with traditional techniques. ***This would be another "Dear IBM" suggestion*** :)
 

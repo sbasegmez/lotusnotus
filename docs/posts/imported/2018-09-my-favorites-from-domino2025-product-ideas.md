@@ -37,9 +37,6 @@ Anyway, I have listed a bunch of ideas that I voted and want to emphasize. I als
 * [Designer support mulitple monitors](https://domino.ideas.aha.io/ideas/DDXP-I-110)
 * [Allow JAR files to be used in Java agents](https://domino.ideas.aha.io/ideas/DDXP-I-3)
 
-<br />
-
-<br />
 
 **Admin Ideas**
 
@@ -50,8 +47,5 @@ Anyway, I have listed a bunch of ideas that I voted and want to emphasize. I als
 * [Deleted folders should be restorable from Trash](https://domino.ideas.aha.io/ideas/NTS-I-31)
 * [RedirectTo domain limitation](https://domino.ideas.aha.io/ideas/DOMINO-I-273)
 
-<br />
-
-<br />
 
 Thank you for all contributors so far. I'll update this post from time to time. Feel free to add yours below...

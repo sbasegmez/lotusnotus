@@ -62,63 +62,60 @@ Under the cover, application is using a Managed Bean to handle the list of parti
 
 When the participant list called for the first time (via **plist.list** data binding), it prepares the _list object within the managed bean.
 
-```
+```java
 // From ParticipantList class...
 public List<Participant> getList() {
-if(_list==null) {
-_list=new ArrayList<Participant>();
+  if(_list==null) {
+    _list=new ArrayList<Participant>();
+    DominoDocument dominoDoc=getDominoDoc();
 
-DominoDocument dominoDoc=getDominoDoc();
+    try {
+      if(dominoDoc.isNewNote()) {
+        // It will be empty on a new document
+      } else {
+        loadList(getEventCode());
+      }
+    } catch (NotesException e) {
+      // Use http://www.openntf.org Domino API to get rid of this.
+      e.printStackTrace();
+    }
+  }
 
-try {
-if(dominoDoc.isNewNote()) {
-// It will be empty on a new document
-} else {
-loadList(getEventCode());
-}
-} catch (NotesException e) {
-// Use http://www.openntf.org Domino API to get rid of this.
-e.printStackTrace();
-}
-}
-
-return _list;
+  return _list;
 }
 
 private void loadList(String eventCode) {
-Database db=ExtLibUtil.getCurrentDatabase();
+  Database db=ExtLibUtil.getCurrentDatabase();
 
-View view=null;
-ViewEntryCollection entries=null;
+  View view=null;
+  ViewEntryCollection entries=null;
 
-try {
-view=db.getView("ParticipantsByEventCode");
-entries=view.getAllEntriesByKey(eventCode, true);
+  try {
+    view=db.getView("ParticipantsByEventCode");
+    entries=view.getAllEntriesByKey(eventCode, true);
 
-ViewEntry ve=entries.getFirstEntry();
+    ViewEntry ve=entries.getFirstEntry();
 
-while(ve!=null) {
+    while(ve!=null) {
+      Document pDoc=null;
 
-Document pDoc=null;
-try {
-pDoc=ve.getDocument();
+      try {
+        pDoc=ve.getDocument();
+        _list.add(new Participant(pDoc));
+      } finally {
+        Utils.recycleObject(pDoc);
+      }
 
-_list.add(new Participant(pDoc));
-} finally {
-Utils.recycleObject(pDoc);
-}
-
-ViewEntry tmpEntry=ve;
-ve=entries.getNextEntry(tmpEntry);
-Utils.recycleObject(tmpEntry);
-}
-
-} catch (NotesException e) {
-// Use http://www.openntf.org Domino API to get rid of this.
-e.printStackTrace();
-} finally {
-Utils.recycleObjects(view, entries);
-}
+      ViewEntry tmpEntry=ve;
+      ve=entries.getNextEntry(tmpEntry);
+      Utils.recycleObject(tmpEntry);
+    }
+  } catch (NotesException e) {
+    // Use http://www.openntf.org Domino API to get rid of this.
+    e.printStackTrace();
+  } finally {
+    Utils.recycleObjects(view, entries);
+  }
 }
 ```
 
@@ -126,31 +123,28 @@ Utils.recycleObjects(view, entries);
 
 The saveParticipants() method into the *postSaveDocument* event of the parent document source.
 
-```
+```java
 // From ParticipantList class...
 public void saveParticipants() {
-try {
-Iterator<Participant> iterator=_list.iterator();
+  try {
+    Iterator<Participant> iterator=_list.iterator();
+    
+    while(iterator.hasNext()) {
+      Participant p=iterator.next();
 
-while(iterator.hasNext()) {
-Participant p=iterator.next();
+      p.saveToDb(ExtLibUtil.getCurrentDatabase());
 
-p.saveToDb(ExtLibUtil.getCurrentDatabase());
+      if(p.isDeleted()) {
+        iterator.remove();
+      }
+    }
 
-if(p.isDeleted()) {
-iterator.remove();
-}
-}
-
-} catch (NotesException e) {
-// Use http://www.openntf.org Domino API to get rid of this.
-e.printStackTrace();
-}
-
+  } catch (NotesException e) {
+    // Use http://www.openntf.org Domino API to get rid of this.
+    e.printStackTrace();
+  }
 }
 ```
-
-<br />
 
 Here, the data layer is also embedded within the Participant class. it loads and saves itself from/to a participant document. The class design decides what to do on I/O operations.
 
@@ -158,15 +152,15 @@ Once you build such a basic structure, it gets really easy to add more functiona
 
 One more opportunity is adding additional in-place actions that make changes in the child data. I have added LCV status as an example. You may select some participants and toggle their LCV status.
 
-```
+```java
 // From ParticipantList class...
 public void toggleLcv() {
-for(Participant p:_list) {
-if(p.isSelected()) {
-p.toggleLcv();
-p.setSelected(false);
-}
-}
+  for(Participant p:_list) {
+    if(p.isSelected()) {
+      p.toggleLcv();
+      p.setSelected(false);
+    }
+  }
 }
 ```
 

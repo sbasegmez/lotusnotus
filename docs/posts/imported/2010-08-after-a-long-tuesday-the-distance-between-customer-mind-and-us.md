@@ -33,9 +33,6 @@ Between these sessions, I had lots of time to talk with customers and seen that 
 | **What IBM talked about?**                                                                                                          | **What customers asked about?**                                                                                                                                                                                                                                                    |
 | Social Software Business applications of Social Networks Team Collaboration Mobile Collaboration Wikis, blogs, etc. Cloud Computing | Cheapest way of Domino - SAP integration How do we report in Notes applications? What is the future of Lotus Workflow? Is there a way to implement approvals in Blackberry? How do we implement QA documentation or document-based workflow? Turkish packages are coming too late. |
 
-<br />
-
-<br />
 
 I think IBM and partners will learn a lesson from the situation. More market research, customer meetings or realistic approaches needed...
 

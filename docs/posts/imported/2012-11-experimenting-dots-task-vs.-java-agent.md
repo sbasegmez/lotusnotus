@@ -31,7 +31,7 @@ For this experiment, I'm using an exploded version of [FakeNames database](http:
 
 First, I have created a '*terrible* ' Java agent which does nothing.
 
-```
+```java
 import java.util.Date;
 
 import lotus.domino.AgentBase;
@@ -92,15 +92,11 @@ public class JavaAgent extends AgentBase {
 }
 ```
 
-<br />
-
-<br />
-
 As I said before, it does nothing but counting people that has a first name starts with "Sa". So it does something, consume memory and CPU. Who cares :)
 
 Then I implemented the same code as a DOTS task:
 
-```
+```java
 import java.util.Date;
 
 import lotus.domino.Database;
@@ -166,9 +162,6 @@ public class AnnotatedTasklet extends AbstractServerTaskExt {
 ```
 
 <br />
-
-<br />
-
 Now, results:
 
 ```
@@ -183,8 +176,6 @@ Now, results:
 
 <br />
 
-<br />
-
 ```
 > load dots
 > Listening for transport dt_socket at address: 8001
@@ -195,10 +186,6 @@ Now, results:
 09.11.2012 19:43:22   [DOTS] (annotated) Finished in 41 secs...
 ```
 
-<br />
-
-<br />
-
 You got the idea. The same Java routine runs in **143 seconds** as a **Java agent** and **41 seconds** as a **DOTS task** \*.
 
-###### (\*) Clinical trials from Developi labs :)
+_(\*) Clinical trials from Developi labs :)_

@@ -35,10 +35,12 @@ For password reset operation, there are cross certification documents for each r
 [0B30:009A-0CC4] NAMELookup::<lookup> Searching name='O=Acme' (1 of 1 names).
 [0B30:009A-0CC4] NAMELookup::<lookup> Searching DBIndex=1.
 [0B30:009A-0CC4] NAMELookup::<lookup> NumReturned=0, TotalNumReturned=0 match(es) for name='O=Acme'</blockquote>
+```
 
 In this case, it could not find the certifier document (entry not found in index). In my case, though:
 
-<blockquote>[0B30:009A-0CC4] NAMELookup::<lookup> Searching view '($Users)' (1 of 1 views).
+```
+[0B30:009A-0CC4] NAMELookup::<lookup> Searching view '($Users)' (1 of 1 views).
 [0B30:009A-0CC4] NAMELookup::<lookup> Searching name='O=Acme' (1 of 1 names).
 [0B30:009A-0CC4] NAMELookup::<lookup> Searching DBIndex=1.
 [0B30:009A-0CC4] NAMELookup::<lookup> NumReturned=2, TotalNumReturned=2 match(es) for name='O=Acme'
@@ -46,10 +48,8 @@ In this case, it could not find the certifier document (entry not found in index
 
 <br />
 
-<br />
-
 There were two matches in the address book. I just checked with '($Users)' view and that was correct. There were a person document with 'O=acme' line in shortname field!
 
 Probably we made a mistake while dealing with the SSO issue. It can be fatal to place your certifier name into an alias :)
 
-I am a bit flushed... But the problem has been solved...
+I am a bit blushed... But the problem has been solved...

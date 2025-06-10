@@ -34,7 +34,7 @@ First, create a test database on Domino 8.5.2 server. A new feature came with th
 
 Now create an XPage as the following:
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core">
      <xp:this.beforePageLoad><![CDATA[#{javascript:viewScope.testJS=function testJS(parameter) { print("got this: "+parameter); }}]]></xp:this.beforePageLoad>
@@ -47,10 +47,6 @@ Now create an XPage as the following:
      </xp:button>
 </xp:view>
 ```
-
-<br />
-
-<br />
 
 It's a cool trick. What we did here is to **create a Javascript function, put it into viewScope** . We can use this inside a custom control for instance. So we can communicate between custom controls and their mother pages. But be patient before implementation :)
 
@@ -76,7 +72,7 @@ We didn't change anything except accepting the default performance option in the
 
 Let's change our code as the following. This time, we will use sessionScope, instead of viewScope.
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core">
      <xp:this.beforePageLoad><![CDATA[#{javascript:sessionScope.testJS=function testJS(parameter) { print("got this: "+parameter); }}]]></xp:this.beforePageLoad>
@@ -89,10 +85,6 @@ Let's change our code as the following. This time, we will use sessionScope, ins
      </xp:button>
 </xp:view>
 ```
-
-<br />
-
-<br />
 
 It works now! Seems funny huh? In fact, sessionScope and viewScope are coming from the same HashMap implementation in Java. However there is a problem with the setting that XPages team changed.
 

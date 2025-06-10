@@ -25,15 +25,10 @@ That was easy. I tested some notifications and saw that these will not be useful
 <!-- more -->
 For instance, although I configure the locale of notification messages as 'tr' (I mean Turkish), month names are still in English (like 4.April.2011). We can customize 'What's New newsletters' content but not subject. In addition an ordinary newsletter seems like that:
 
-```
-Your place "Test Place1" has changed in the last 7 day(s), updated last at April 09 2011 12:07:23.
 
-"deneme" has been changed by Serdar Basegmez blah blah...
-```
-
-<br />
-
-<br />
+> Your place "Test Place1" has changed in the last 7 day(s), updated last at April 09 2011 12:07:23.
+> 
+> "deneme" has been changed by Serdar Basegmez blah blah...
 
 Here, you cannot pass a link directly to the content. The user has to enter the index view and find the content by himself/herself (Correct me if I'm wrong)...
 

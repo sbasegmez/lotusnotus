@@ -60,46 +60,40 @@ Actually, there is not much changes in this page. Here is a list of what I did h
 **I imported my CSS:**
 You may import your CSS file inside HEAD tags here. There are two options. If you want to import the stylesheet file that you have uploaded into the custom theme:
 
-```
+```html
 <link rel="stylesheet" type="text/css" href="stylesheet.css" />
 ```
 
 <br />
 
-<br />
-
 As I said, it is not practical to upload every changes again and again. Instead, I preferred to put my css into the theme folder I just created:
 
-```
+```html
 <link rel="stylesheet" type="text/css" href="/qphtml/skins/lugtheme/css/stylesheet.css" />
 ```
-
-<br />
 
 <br />
 
 **I changed the logo:**
 You may change your logo directly in the stylesheet. Logo is placed as a IMG tag:
 
-```
+```html
 <img src="/domjs/dojo-1.3.2/dojo/resources/blank.gif" alt="@@[BANNER.LOGO_ALT]@@" class="lotusLogo" id="lotusLogo"/>
 ```
 
 <br />
 
-<br />
-
 You may change css to put your logo as a background image to this object. I don't like to deal with it if I have a chance to overwrite HTML. So I did this:
 
-```
 HTML code:
+```html
 <img src="/qphtml/skins/lugtheme/images/logo.gif" class="lugLogo"/>
+```
 
 CSS File:
+```css
 .lugLogo {position:absolute; z-index:1;}
 ```
-
-<br />
 
 <br />
 
@@ -114,15 +108,13 @@ The important thing is the content. But there is an inefficiency because it star
 
 I replaced the place name with the breadcrumb and also played with the CSS to relocate action button. there is a small detail about relocation of action button. If the detail section under the header is bigger, buttons would lost orientation, so I decreased their font-size. Here is the css code:
 
-```
+```css
 div.lotusHeader { margin-top:0px; margin-bottom:5px;}
 div.lotusHeader div.lotusMeta {font-size:0.9em; }
 div.lotusHeader { float:left; }
 div.qkrActions { float:right; width:auto; margin-top:0px; margin-right:-5px;}
 div.lotusMeta div.qkrTextField {width:auto !important; }
 ```
-
-<br />
 
 <br />
 
@@ -133,7 +125,7 @@ You should always test your design with different browsers. There was a strange 
 
 UL element is broken into vertical orientation. The mystery becomes more interesting. I am adding "display:list-item;" to its style directly from developer tools of chrome and it becomes horizontal again. However, when I add it from stylesheet, it does not work! So what I did is funny. I gave an ID to the UL and placed this script:
 
-```
+```js
 //Chrome fix
 dojo.addOnLoad(
    function(){
@@ -144,26 +136,20 @@ dojo.addOnLoad(
 
 <br />
 
-<br />
-
 **I customized Footer:**
 The footer part is interesting. Eventually I figured it out how it works. On the page.htm file, you can see it is just a dojo widget, as other elements...
 
-```
+```html
 <div dojoType="quickr.widgets.misc.footer"></div>
 ```
 
 <br />
 
-<br />
-
 Widget is being processed by javascript API. It uses an XSL file (footer.xsl) which is located under "\\html\\qphtml\\widgets\\misc" folder. I copied under my theme folder and changed as I wanted. Finally I changed widget code as the following:
 
-```
+```html
 <div dojoType="quickr.widgets.misc.footer" xslSource="/qphtml/skins/lugtheme/widgets/cFooter.xsl"></div>
 ```
-
-<br />
 
 <br />
 
@@ -175,58 +161,45 @@ Widget customization is an important feature. I could not find enough documentat
 
 #### Do you support multilingual interface in your customization?
 
-<br />
-
 Although LUGTR site will be mainly in Turkish, I have to support multilingual interface coming with 8.5.x. But how?
 
 Multilingual data has been placed into several segments in Quickr interface. One of them is inside the servlet that interprets haiku context. We cannot interfere with that, obviously. The second part is coming with dojo, which I don't prefer to modify :)
 
 There is also template-based multilingual string repository laid under "/html/qphtml/skins/quickr/nls" folder. The repository is being loaded into q_LocaleUtils javascript object. If you open one of files in this directory, you can see that there are javascript array objects inside .js files. There is one default "QuickrStrings.js" in nls folder and one per each language in appropriate sub-folders (en, tr, de, etc.).
 
-```
+```js
 {
-
-  GENERAL: {
-          LOADING:                                        "Loading...",
-          WORKING:                                        "Saving...",
-          WINDOWTITLE:                   "Lotus Quickr",
-          SKIPTOMAINCONTENT:         "Skip to main content link. Accesskey S",
-          NOT_IMPLEMENTED:                  "This is not yet implemented",
-          DROPDOWNMENUICON_ALT: "Show menu"
+  GENERAL: {
+    LOADING:                "Loading...",
+    WORKING:                "Saving...",
+    WINDOWTITLE:            "Lotus Quickr",
+    SKIPTOMAINCONTENT:      "Skip to main content link. Accesskey S",
+    NOT_IMPLEMENTED:        "This is not yet implemented",
+    DROPDOWNMENUICON_ALT:   "Show menu"
   },
          
   BANNER: {
- 
-          LOGO_ALT:         "Lotus Quickr",
-....
-
+    LOGO_ALT:               "Lotus Quickr",
+//....
 ```
-
-<br />
 
 <br />
 
 Although we may use this repository by directly editing these files, it is not appropriate. Because in any fix pack installation, this directories may be reset to their initial states. So I have constructed a similar directory structure in my theme directory and put my strings into there. Then I instructed javascript engine to load my strings.
 
-```
+```html
 <script type="text/javascript">q_LocaleUtils.loadStringFiles("LUG_ext", "/qphtml/skins/lugtheme", "quickrstrings");</script>
 ```
 
-<br />
-
-<br />
 
 You may place this code between HEAD tags in your page.htm file. Proceed with it right now. Finally, we will place all these scripts to an extension script for more elegant looking :) When you want to get a string resource, you have two options: Using dojo or Javascript:
 
-```
+```html
 <div dojoType="quickr.widgets.misc.textlocalizer" key="CUSTOM.CUSTOMKEY"></div>
 
 <script>alert(q_LocaleUtils.getStringResource("CUSTOM.CUSTOMKEY"));</script>
 ```
 
-<br />
-
-<br />
 
 You may use javascript notation to customize links for different languages.
 
@@ -236,8 +209,8 @@ You may use javascript notation to customize links for different languages.
 
 I am still working on the new theme. I will blog more about my improvements. However, there are still unresolved issues for me and waiting for your comments.
 
-* I still don't know how I can customize the landing page. I think I will play with some elements in lotusquickr\\main.nsf database.
-* It may be a good idea to put 'What's new page' on the home page of the place.
+* I still don't know how I can customize the landing page. I think I will play with some elements in `lotusquickr\main.nsf` database.
+* It may be a good idea to put "What's new page" on the home page of the place.
 * A convenient method to change the content layout is needed. I can play with some XSL files to relocate RSS link for instance. But modifying standard widget elements may create problems in upgrades.
 * I want to change business card widget.
 

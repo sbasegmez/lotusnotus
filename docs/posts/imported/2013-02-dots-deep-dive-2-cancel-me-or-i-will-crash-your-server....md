@@ -29,7 +29,7 @@ Let's dive into code here.
 
 Our tasklet is running every five seconds and wait 30 seconds each run:
 
-```
+```java
 @RunEvery( every=5, unit=RunUnit.second )
 public void run5(IProgressMonitor monitor) throws Exception {
       logMessage("START: 5 Secs");
@@ -46,9 +46,6 @@ public void run5(IProgressMonitor monitor) throws Exception {
 }
 ```
 
-<br />
-
-<br />
 
 We have splitted 30 seconds wait into 15 parts of sleeping to make more sense. Using "*beginTask* " method at start, we have declared that "Our tasklet will do 15 units of job". Each unit, we inform progress monitor for "1 unit completed" message with "*worked* " method. We can check the status from the console:
 
@@ -64,9 +61,6 @@ We have splitted 30 seconds wait into 15 parts of sleeping to make more sense. U
 11.02.2013 12:22:06   [DOTS] --- No task running
 ```
 
-<br />
-
-<br />
 
 What if we cancel this task? Lets try...
 
@@ -78,15 +72,12 @@ What if we cancel this task? Lets try...
 11.02.2013 12:29:29   Domino OSGi Tasklet Container terminated ( profile DOTS )
 ```
 
-<br />
-
-<br />
 
 When we stop DOTS task, it will try to cancel our task. However it's not a cancellation. Our tasklet finished its run (30 seconds) because it doesn't have an idea we have sent a cancel signal...
 
 Now add a simple check inside our loop...
 
-```
+```java
 @RunEvery( every=5, unit=RunUnit.second )
 public void run5(IProgressMonitor monitor) throws Exception {
       logMessage("START: 5 Secs");
@@ -109,9 +100,6 @@ public void run5(IProgressMonitor monitor) throws Exception {
 }
 ```
 
-<br />
-
-<br />
 
 When we cancel the tasklet, it will get the signal and break the execution...
 
@@ -124,9 +112,6 @@ When we cancel the tasklet, it will get the signal and break the execution...
 11.02.2013 12:34:34   Domino OSGi Tasklet Container terminated ( profile DOTS )
 ```
 
-<br />
-
-<br />
 
 Receiving the cancel signal is extremely important. Suppose you are developing a very very long-running tasklet (it might be a manual tasklet as well). You should be able to break the execution at any point without waiting its normal run. At some point of cancellation, DOTS will decide it's crashed and fill your console with strange error messages...
 

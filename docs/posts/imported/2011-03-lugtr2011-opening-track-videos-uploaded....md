@@ -28,12 +28,6 @@ Anyway, enjoy...
 
 **[Ed Brill](http://www.edbrill.com "Ed Brill") - Keynote Speech: "Collaboration Agenda" (** [**Part 1**](http://www.youtube.com/watch?v=7qIEggEY6cg)**\|** [**Part 2**](http://www.youtube.com/watch?v=vg38B7ztc80)**\|** [**Part 3**](http://www.youtube.com/watch?v=1x4wQxsvPug)**\|** [**Playlist**](http://www.youtube.com/watch?v=7qIEggEY6cg&playnext=1&list=PL5CBC6559B2C6B334)**)**
 
-<br />
-
-<br />
 
 **Ozgur Uckan \& Deniz Sener - "Business, Socially! (in Turkish)" (** [**Part 1**](http://youtu.be/A9JN3cz9WtQ)**\|** [**Part 2**](http://www.youtube.com/watch?v=xqVcgtm1PyI)**\|** [**Part 3**](http://www.youtube.com/watch?v=70_LTvcoWxY)**\|** [**Playlist**](http://www.youtube.com/view_play_list?p=43C76A2F66A52DBF)**)**
 
-<br />
-
-<br />

@@ -115,8 +115,5 @@ Let's start with the wrap-up:
 * Domino Mail-in Database lookup
 * Group name lookup
 
-<br />
-
-<br />
 
 We may see more in the gold release. Stay tuned :)

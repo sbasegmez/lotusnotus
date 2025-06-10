@@ -63,7 +63,7 @@ OAuth is a standard protocol except the fact that different companies interpret 
 
 As an example, Box authorization needs a "redirect_uri" parameter to determine where to redirect back after authentication. However, the standard OAuth2 implementation of SBT uses "callback_uri" in the usual form (redirect_uri is optional and this should be preconfigured according to the specification). So the right strategy is to modify the original endpoint by inheritence. We should assure that our changes are minimal to keep maintainability in next versions. Since the authorization URL is constructed in the handler, we are using an anonymous inner class for simplicity. Here is the new [Endpoint implementation](https://github.com/sbasegmez/Blogged/blob/master/CloudFile/odp.cloudfile/Code/Java/com/developi/sbt/extensions/BoxEndpoint.java) for Box:
 
-```
+```java
 package com.developi.sbt.extensions;
 
 import java.io.UnsupportedEncodingException;
@@ -98,9 +98,6 @@ public class BoxEndpoint extends OAuth2Endpoint {
 }
 ```
 
-<br />
-
-<br />
 
 In the demo application, I have used two additional Java classes to cover some problems of SBT for XPages. The first is the "[NSF-Cached Credential Store for IBM Social Business Toolkit](http://openntf.org/XSnippets.nsf/snippet.xsp?id=nsf-cached-credential-store-for-ibm-social-business-toolkit)" snippet I have created a while ago. When you use SBT for XPages, the OAuth tokens for users are stored in memory. That's a bit annoying during development, because it gets cleared every time you make a change in your application. This snippet is caching tokens within the database using MIMEBean.
 

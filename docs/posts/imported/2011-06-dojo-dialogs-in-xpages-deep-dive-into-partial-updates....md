@@ -24,7 +24,7 @@ I have dived into the world of partial updates recently. We will complicate thin
 <!-- more -->
 We know how to use a dojo dialog, right? Let's have a simple example here...
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core" dojoParseOnLoad="true" dojoTheme="true">
         <xp:this.resources>
@@ -44,17 +44,13 @@ We know how to use a dojo dialog, right? Let's have a simple example here...
 </xp:view>
 ```
 
-<br />
-
-<br />
-
 It's pretty straight forward, right? When we click the button, it launches the dialog and it seems like:
 
 ![Image:Dojo Dialogs in XPages: Deep dive into Partial Updates...](../../images/imported/dojo-dialogs-in-xpages-deep-dive-into-partial-updates-M2.gif)
 
 Now let's complicate things further. We will add some extra feature. I would like to add partial refresh inside the dialog.
 
-```
+```xml
        <xp:panel id="dlg" dojoType="dijit.Dialog">
                 <xp:this.dojoAttributes>
                         <xp:dojoAttribute name="title" value="Test Dialog"></xp:dojoAttribute>
@@ -67,10 +63,6 @@ Now let's complicate things further. We will add some extra feature. I would lik
         </xp:panel>
 ```
 
-<br />
-
-<br />
-
 ![Image:Dojo Dialogs in XPages: Deep dive into Partial Updates...](../../images/imported/dojo-dialogs-in-xpages-deep-dive-into-partial-updates-M3.gif)
 
 If you have some experience, you'll know that it won't work! The reason is simple as many bloggers suggested... You may see further examples and solutions in a [post by Mark Hughes](http://blog.hughesconnect.com/?p=21) and [Jeremy Hodge's reusable solution](http://xpagesblog.com/xpages-blog/2010/4/10/xpages-compatible-dojo-dialog-reusable-component.html)...
@@ -79,7 +71,7 @@ Let me explain the problem in the simplest way. When you declare or create a dij
 
 The solution that has been offered by Mark and Jeremy is simple. After the dialog's creation, we are moving it back inside the FORM tag. But we should not use declarative creation this time. Let's see how:
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core" dojoParseOnLoad="true"
         dojoTheme="true">
@@ -114,10 +106,6 @@ dialogWidget.show()
 </xp:view>
 ```
 
-<br />
-
-<br />
-
 ![Image:Dojo Dialogs in XPages: Deep dive into Partial Updates...](../../images/imported/dojo-dialogs-in-xpages-deep-dive-into-partial-updates-M4.gif)
 
 As you see, we are creating the dialog inside the button's client-side event. Before that, we check if it has been created before. If so, we show it and terminate.
@@ -128,7 +116,7 @@ If you noticed, dialog content is being prepared during load, which means that w
 
 So next step, we would like to show a dialog which has a calculated context. Let's see the example below...
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core" dojoParseOnLoad="true" dojoTheme="true">
         <xp:this.resources>
@@ -173,10 +161,6 @@ dialogWidget.show()]]></xp:this.onComplete>
         </xp:div>
 </xp:view>
 ```
-
-<br />
-
-<br />
 
 This time we have a dialog with two input boxes. The first is 'In-dialog update' will be refreshed when 'button1' is clicked. The second is 'Pre-dialog update' which is going to be calculated at when the dialog launched. As you noticed, the event handler has been changed in the launcher button... It first refresh inside the 'dlgWrapper' div partially and when the partial update completed it runs the client-side script to display the dialog. The bold part also shows that we have to destroy the old dialog box now.
 

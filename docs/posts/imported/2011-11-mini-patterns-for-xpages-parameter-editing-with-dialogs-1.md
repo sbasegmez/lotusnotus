@@ -35,7 +35,7 @@ We may add more fields like the last modifier, author field, etc. Let's keep it 
 
 Now, let's design our XPages view. I used a data table for this. Because I hate the view panel object and I'm very comfortable with data table. It's more practical.
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom" xmlns:xe="http://www.ibm.com/xsp/coreex">
 
@@ -73,10 +73,6 @@ Now, let's design our XPages view. I used a data table for this. Because I hate 
 </xp:view>
 ```
 
-<br />
-
-<br />
-
 It seems like a standard view. I placed links for the name field, we will use it. One may add/remove columns to fit the need.
 
 ![Image:Mini-Patterns for XPages: Parameter Editing with Dialogs (1)](../../images/imported/mini-patterns-for-xpages-parameter-editing-with-dialogs-1-M4.gif)
@@ -85,7 +81,7 @@ We are planning to use a tooltip dialog for CRUD operations. In order not to cre
 
 However, in tooltip dialogs, you should specify where to launch the dialog (near which element). So here is the trick:
 
-```
+```xml
 <xp:button value="New Parameter" id="newButton">
        <xp:eventHandler event="onclick" submit="true" refreshMode="norefresh" onComplete="XSP.openTooltipDialog('#{id:dlg}', '#{id:newButton}')">
                <xp:this.action><![CDATA[#{javascript:viewScope.noteId="NEW";}]]></xp:this.action>
@@ -93,13 +89,9 @@ However, in tooltip dialogs, you should specify where to launch the dialog (near
 </xp:button>
 ```
 
-<br />
-
-<br />
-
 It will set the required scope variable and launches the dialog at 'onComplete' part. Now, let's modify our 'NameLink' element at the data table to launch the dialog similarly.
 
-```
+```xml
 <xp:link escape="true" text="#{rowData.Name}" id="NameLink">
        <xp:eventHandler event="onclick" submit="true" refreshMode="norefresh" onComplete="XSP.openTooltipDialog('#{id:dlg}', '#{id:NameLink}')">
                <xp:this.action><![CDATA[#{javascript:viewScope.noteId=rowData.getNoteID();}]]></xp:this.action>
@@ -107,13 +99,9 @@ It will set the required scope variable and launches the dialog at 'onComplete' 
 </xp:link>
 ```
 
-<br />
-
-<br />
-
 It's pretty the same. Now, it's time for the dialog. We may place it anywhere on the page. It will be hidden at first, until we launch it.
 
-```
+```xml
 <xe:tooltipDialog id="dlg" title="Parameter">
        <xp:panel style="width:500.0px">
                <xp:this.data>
@@ -201,10 +189,6 @@ It's pretty the same. Now, it's time for the dialog. We may place it anywhere on
 </xe:tooltipDialog>
 ```
 
-<br />
-
-<br />
-
 Here, there are two important points. The first is that we get the document at the launch phase of the dialog. Javascript calculates it from the viewScope.noteId parameter. You should use viewScope here. Because there are two partial refresh events in the opening of a dialog (first is setting scope, the second is document retrieval). Therefore you cannot use requestScope.
 
 The second point is the script that closes the dialog. As I said before extension library dialogs are very cool components. You can see that we are closing them at the server side. 'hide()' function has a refresh parameter. If you give a parameter, it will refresh the element you pointed after closing the dialog.
@@ -223,7 +207,7 @@ Hope it helps to you.
 
 ![Image:Mini-Patterns for XPages: Parameter Editing with Dialogs (1)](../../images/imported/mini-patterns-for-xpages-parameter-editing-with-dialogs-1-M6.gif)
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom" xmlns:xe="http://www.ibm.com/xsp/coreex">
 

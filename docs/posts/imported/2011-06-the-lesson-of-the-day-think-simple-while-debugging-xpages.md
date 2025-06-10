@@ -25,7 +25,7 @@ I am developing an XPages project and I worked on SSJS persistence and scope iss
 
 Yesterday, in the middle of night, I had a stupid problem in my code.
 
-```
+```js
 function getDoc(someParams) {
    // ... do something ... //
    return someDoc;
@@ -41,14 +41,10 @@ function setSomeValue(value) {
 }
 ```
 
-<br />
-
-<br />
-
 It's a simple code. Get some document and set some fields and save... However, it sometimes throws an error like this:
 
-**Error while executing JavaScript action expression**
-**Script interpreter error, line€, col=26: \[TypeError\] Exception occurred calling method NotesDocument.save(boolean, boolean) null**
+> Error while executing JavaScript action expression
+> Script interpreter error, line€, col=26: \[TypeError\] Exception occurred calling method NotesDocument.save(boolean, boolean) null
 
 The error is coming from "doc.save()" method. But the error message is interesting. There is a "TypeError" here. So I put 'print's everywhere in my code to determine if 'doc' object is fine. No solution... It also says null. Again a number of 'print's, no hope! I removed functions and put my code directly into a button, no hope! It doesn't work...
 

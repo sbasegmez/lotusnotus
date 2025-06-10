@@ -57,7 +57,7 @@ I couldn't find a similar way to do this in Internet Explorer 9. If you know, pl
 
 It's pretty easy! You need to add two things to your database. First an XML file definition for opensearch:
 
-```
+```xml
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
 <ShortName>XPages</ShortName>
 <Description>XPages.info Search</Description>
@@ -65,10 +65,6 @@ It's pretty easy! You need to add two things to your database. First an XML file
 <Url type="text/html" method="get" template="http://xpages.info/XPagesHome.nsf/SearchResults.xsp?search={searchTerms}"/>
 </OpenSearchDescription>
 ```
-
-<br />
-
-<br />
 
 You can also add some more properties here such as an icon to show in the search engine listing.
 

@@ -24,7 +24,7 @@ When you run a server-side code at your XPage, your operation may be successful 
 <!-- more -->
 Usually, that's not possible, you know. Because the code is running between state transitions. I am using a simple custom control to do that.
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core">
 
@@ -52,13 +52,9 @@ Usually, that's not possible, you know. Because the code is running between stat
 </xp:view>
 ```
 
-<br />
-
-<br />
-
 We can use either sessionScope or viewScope to transmit our parameters. Here is a SSJS example for this:
 
-```
+```vbscript
 function someFunction() {
 
       // Do Something Useful...
@@ -72,10 +68,6 @@ function someFunction() {
       }
 }
 ```
-
-<br />
-
-<br />
 
 When the page is refreshed (fully/partially), we check for viewScope and sessionScope parameters, show the message and clear them not to duplicate it. It may not be cleared at that moment and extended with a close button that clears the message from the scope. Severity options are determined with the icon names.
 

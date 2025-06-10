@@ -79,8 +79,5 @@ Of course blogs are raining about new features. I wrapped-up some important feat
 
 * **Silent fail-over**, changes replica if one server is unreachable, without bizarre pop-ups to end-user.
 
-<br />
-
-<br />
 
 \* Of course, there is no need to remind that all these features are not final and certain. So IBM may alter or cancel these new improvements...

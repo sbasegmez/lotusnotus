@@ -40,9 +40,6 @@ This is the initial code of the button:
 </xp:button>
 ```
 
-<br />
-
-<br />
 
 First we activate dojo and add needed modules in our XPage/custom control:
 
@@ -52,7 +49,7 @@ First we activate dojo and add needed modules in our XPage/custom control:
 
 Now we will create our dialog div. You can create it anywhere in the page:
 
-```
+```html
 <div id="progressDialog" dojoType="dijit.Dialog" title="Please wait...">
      <div>
              <xp:image url="/inProgress.gif" id="image3"></xp:image>
@@ -60,15 +57,12 @@ Now we will create our dialog div. You can create it anywhere in the page:
 </div>
 ```
 
-<br />
-
-<br />
 
 We could use "xp:panel" tag here and set dojo attributes. It's a matter of preference. "inProgress.gif" is an animated image just to create an illusion of progress :)
 
 Now we create a couple of client side javascript functions to show and hide this dialog. Here is a little trick. We don't want the dialog closable. Since I could not find a solution for 'non-closable' dialog, just googled and used this approach.
 
-```
+```js
 function scoringCompleted() {
      dlg=dijit.byId("progressDialog");
      dlg.hide();
@@ -81,23 +75,15 @@ function scoringStarted() {
 }
 ```
 
-<br />
-
-<br />
-
 Here (in the bold part), we set a widget event to prevent "ESC" key. Escape keystroke stop loading of the page but does not close the dialog. If you are using a background agent for processing, escape will not stop the processing. Meanwhile, a little close icon is automatically placed on the title bar of the dialog. We should hide it as well. Put the following code to the CSS file.
 
-```
+```css
 #progressDialog .dijitDialogCloseIcon {display:none;}
 ```
 
-<br />
-
-<br />
-
 Now, it comes to the crucial part. We want to show our dialog when background process started and hide it finally. We simply change the button code as follows:
 
-```
+```xml
 <xp:button value="Puanla..." id="button1" styleClass="lotusBtn">
      <xp:eventHandler event="onclick" submit="true" refreshMode="partial" refreshId="termsPanel"
                      onStart="scoringStarted()"
@@ -107,9 +93,6 @@ onComplete="scoringCompleted()">
 </xp:button>
 ```
 
-<br />
-
-<br />
 
 Result is something like that:
 
@@ -121,7 +104,7 @@ Remember, onStart and onComplete parameters will only work with partial refresh.
 
 Tim suggested far better solution to use **dojox.widget.Standby** . I updated start and complete functions and now there is no need to create divs or css on my page. It may be parameterized laterfor different purposes. Here are my functions:
 
-```
+```js
 function scoringStarted() {
        if(this.fullStandby==null) {
                this.fullStandby = new dojox.widget.Standby({
@@ -137,8 +120,6 @@ function scoringCompleted() {
        if(this.fullStandby!=null) fullStandby.hide();
 }
 ```
-
-<br />
 
 <br />
 

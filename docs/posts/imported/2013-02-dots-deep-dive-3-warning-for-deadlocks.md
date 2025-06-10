@@ -33,7 +33,7 @@ Here, we have an issue. Because DOTS **do nothing** to cancel the tasklet that h
 
 Let's look around the issue with a sample code:
 
-```
+```java
 @RunEvery( every=15, unit=RunUnit.second )
 public void run15(IProgressMonitor monitor) throws Exception {
        logMessage("RUN: 15 seconds");
@@ -62,9 +62,6 @@ public void run5(IProgressMonitor monitor) throws Exception {
 }
 ```
 
-<br />
-
-<br />
 
 There are two tasklets here. The first one is simple. The second one is an infinite loop. When we load DOTS, after a point it will be hung.
 
@@ -102,9 +99,6 @@ There are two tasklets here. The first one is simple. The second one is an infin
 14.02.2013 15:46:39   [DOTS] (stest01) RUN: 15 seconds
 ```
 
-<br />
-
-<br />
 
 As you see, the second tasklet run and became deadlocked. If you leave it, it will shout forever but will never ever dispose the tasklet. As soon as we cancel this tasklet, the first one runs twice. "15:46:36" is because it has been queued. "15:46:39" is the normal schedule.
 

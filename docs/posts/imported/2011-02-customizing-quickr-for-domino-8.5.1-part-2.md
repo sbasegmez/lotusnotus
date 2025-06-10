@@ -33,8 +33,8 @@ Let's begin with the footer. Footer is a widget, named as "**footer.js** " place
 
 If you look at the widget script, you can see these lines in the *postCreate* function:
 
-```
-....
+```js
+///....
 var xmldoc = this.getXmlDocFromString('<?xml version="1.0" encoding="utf-8" ?><entry></entry>');
 
 this._xsl = (this.xslSource.length == 0) ? this.getWidgetLocation() + "/footer.xsl" : this.xslSource;        
@@ -45,20 +45,16 @@ _xslParams['TABLE_SUMMARY'] = window.q_LocaleUtils.getStringResource("FOOTER.SUM
 _xslParams['IS_OFFLINE'] = window.q_BaseLoader.environment.isOffline;
 
 var res = this.transformContent(xmldoc, this._xsl, _xslParams);
-....
+///....
 ```
-
-<br />
 
 <br />
 
 Don't look for functions like "*this.getXmlDocFromString()* " or "*this.transformContent()* " in this javascript file. They are inherited from "*quickr.widgets._transformer* " widget. What this script is doing is simple. It creates an XML DOM (empty one here), put some additional parameters and transform it to some HTML DOM object and place it inside the related div object (in page.htm file).
 
-```
+```html
 <div dojoType="quickr.widgets.misc.footer"></div>
 ```
-
-<br />
 
 <br />
 
@@ -66,8 +62,8 @@ You can also see that the default XSL file (footer.xsl) is located under "\\html
 
 Now, look at the XSL file. I will import some important parts here.
 
-```
-...
+```html
+<!-- ... -->
 <xsl:output method="html"  encoding="utf-8" />
 
 <xsl:param name="WIDGETID_PARAM" select="'*DEFAULTWIDGETID*'" />
@@ -85,12 +81,10 @@ Now, look at the XSL file. I will import some important parts here.
                      <th class="ConnectorSection"><div dojoType="quickr.widgets.misc.textlocalizer" key="FOOTER.CONNECTORS"></div></th>
                      </xsl:otherwise>
                      </xsl:choose>
-...
+<!-- ... -->
 <li><a href="javascript:;" onclick="dijit.byId('{$WIDGETID_PARAM}').openQuickrInfoPage('0337C2FE18A2F9EB05257291006F0D04');"><div dojoType="quickr.widgets.misc.textlocalizer" key="FOOTER.ABOUT"></div></a></li>
-...
+<!-- ... -->
 ```
-
-<br />
 
 <br />
 
@@ -98,11 +92,9 @@ The first part defines internal parameters to be used in transformation. We reme
 
 I copied this XSL file under my theme folder and changed as I wanted. Finally I changed widget declaration (in page.htm file) as the following:
 
-```
+```html
 <div dojoType="quickr.widgets.misc.footer" xslSource="/qphtml/skins/lugtheme/widgets/cFooter.xsl"></div>
 ```
-
-<br />
 
 <br />
 
@@ -116,10 +108,10 @@ Let's begin with the simple one: Changing the photo. Photo source is set automat
 
 Photos are coming from a URL request. There is a [suggestion by Vincent Cailly](http://www-10.lotus.com/ldd/lqwiki.nsf/page.xsp?documentId=0BAA2AB5789BB1A385257535005F7595&action=openDocument) on the wiki that designing a servlet to get photos directly from LDAP. I prefer not to do that because Java Servlet is a very resource-consuming task. I had my check-in application (thanks to Julian from [YouAtNotes](http://www.youatnotes.com/)) which contains all avatars. I simply created an agent and modified qpconfig.xml:
 
-```
-...
+```vbscript
+'...
 email = LCase(getURLParam(session.documentContext.query_string(0), "e="))
-... /*** Get avatar url with some lookups ***/
+'... /*** Get avatar url with some lookups ***/
 if result(0)="" Then
      Print "["+default_avatar+"]"
 Else
@@ -129,10 +121,8 @@ End If
 
 <br />
 
-<br />
-
-```
-...
+```xml
+<!-- ... -->
 <user_photo_source>
 <directory>
  <url>
@@ -140,17 +130,15 @@ End If
  </url>
 </directory>
 </user_photo_source>
-...
+<!-- ... -->
 ```
-
-<br />
 
 <br />
 
 That was the easy part :) Rough part is to modify the layout and include more details... Let's examine the business card widget (/qphtml/widgets/people/personcard.js):
 
-```
-...
+```js
+//...
 var xsl = this.getWidgetLocation() + "/personcard.xsl";        
 
 // default: search for member name (in Contacts db)
@@ -171,10 +159,8 @@ if (!bFound) {
      content = this.transformContent(xmldoc, xsl, xmlParams);
      this._xmlString = "";
 }
-...
+///...
 ```
-
-<br />
 
 <br />
 
@@ -182,52 +168,46 @@ There is a small trick here. In quickr, persons may be internal or external. The
 
 We have two important problems in customization. The first problem is that it does not get a declarative parameter for XSL. So If we want to implement an alternative XSL to change its layout, we have two options. The first is to modify "*personcard.xsl* " file. You don't want to do this :) Because after each upgrade (even minor ones), you have to monitor these changes. What I did here is funny... I inherited this widget and created a new widget in my theme folder (/qphtml/skins/lugtheme/widgets/personcard.js). I also inherited the only function that calls XSL file:
 
-```
+```js
 dojo.provide("quickr.widgets.people.personcard");
 
 dojo.provide("lugwidgets.personcard");
 dojo.require("quickr.widgets.people._personcard");
 
-dojo.declare("lugwidgets.personcard",  [quickr.widgets.people._personcard],
-{
-postCreate: function() {
-try{
+dojo.declare("lugwidgets.personcard",  [quickr.widgets.people._personcard], {
+          postCreate: function() {
+            try{
+              //......... (the same stuff)...........
 
-......... (the same stuff)...........
+              //Customized here*****************
+              var xsl = "/qphtml/skins/lugtheme/widgets/cpersoncard.xsl";
 
-     //Customized here*****************
-     var xsl = "/qphtml/skins/lugtheme/widgets/cpersoncard.xsl";        
-
-......... (the same stuff)...........
-
-}catch(ee){
-}
-}
-})
+              //......... (the same stuff)...........
+            }catch(ee){
+            }
+          }
+});
 ```
-
-<br />
 
 <br />
 
 I created the new XSL file in the custom widgets folder. In the customized XSL, I added the following part just after "Send Mail" button:
 
-```
+```html
 <li>
-<a href="javascript:openProfile('{@ca:email}')">
-<img title="@@[CPEOPLE.MOREINFO]@@" alt="@@[CPEOPLE.MOREINFO]@@" src="/qphtml/skins/lugtheme/images/iconInfo16.png" />
-             <span class="qkrPaddingLeft2px" dojoType="quickr.widgets.misc.textlocalizer" key="CPEOPLE.MOREINFO"></span>
-</a>
+  <a href="javascript:openProfile('{@ca:email}')">
+    <img title="@@[CPEOPLE.MOREINFO]@@" alt="@@[CPEOPLE.MOREINFO]@@" 
+          src="/qphtml/skins/lugtheme/images/iconInfo16.png" />
+    <span class="qkrPaddingLeft2px" dojoType="quickr.widgets.misc.textlocalizer" key="CPEOPLE.MOREINFO"></span>
+  </a>
 </li>
 ```
 
 <br />
 
-<br />
-
 Now we have to configure widget registry to replace the ordinary widget with our new widget. QuickrD has a declaration file named "*/qphtml/widgets/resources/widgetRegistryConfig_ext.js* ". This can be used for widget additions and modifications. The documentation above explains it with great examples. My extensions are like that:
 
-```
+```js
 //*** Customized for LUGTheme
 
 {
@@ -258,15 +238,13 @@ Now we have to configure widget registry to replace the ordinary widget with our
 
 <br />
 
-<br />
-
 We also register our multinational strings at this point. Finally, here is what we get:
 
 ![Image:Customizing Quickr for Domino 8.5.1 (part-2)](../../images/imported/customizing-quickr-for-domino-8-5-1-part-2-M3.gif)
 
 We mentioned about two problems. The second problem is that the xml data containing user information ("*{@ca:email}* ") is coming from the atom engine of Quickr servlet. I could not find a way to change this. Here is the result of atom call:
 
-```
+```xml
 <content type="application/xml">
      <ca:member
              ca:id="(some url)"
@@ -285,13 +263,9 @@ We mentioned about two problems. The second problem is that the xml data contain
 
 <br />
 
-<br />
-
 What you can do is (and what I will) to extend the widget to get additional information (in JSON or XML format) from a domino agent and put this into XML object that will be transformed. When I do it, I'll blog. Meanwhile, I'd like to hear you if you have smarter solution.
 
 #### What we learned...
-
-<br />
 
 Customizing Quickr is not a great issue for me anymore. The crucial part of customization is to be immune against version changes. Up to now, we would not lose anything we customized. Remember, extensions will be preserved during upgrades. We should only be careful if lab guys redesign the person card widget entirely, which seems more possible in major upgrades.
 
@@ -299,9 +273,9 @@ In addition, we keep all customized files together in the theme directory. That 
 
 One last thing. Our business card customization will be valid for entire QuickrD installation. If you want to modify a widget for only specific theme, as told in wiki article, you can use selective modifications in the widget registry (in fact I didn't test it with 'globalreplace'):
 
-```
+```json
 {
-     type: 'some type',
+     type: "some type",
      condition: "some javascript condition",
      source: "some widget",
      use: "some widget"
@@ -310,15 +284,12 @@ One last thing. Our business card customization will be valid for entire QuickrD
 
 <br />
 
-<br />
-
 **UPDATE, regarding feedback :)**
 
 Anna is curious about how I changed the way inline list I have changed. Let's publish what I did there... In **page.htm** file:
 
-```
+```html
 <ul class="lotusInlinelist" id="topRightUL">
-
         <li class="lotusFirst">
                 <div dojoType="quickr.widgets.misc.myusername"></div>
         </li>
@@ -339,18 +310,14 @@ Anna is curious about how I changed the way inline list I have changed. Let's pu
 
 <br />
 
-<br />
-
 As seen, username, help link and login/logout links are built by a widget. I needed a fourth link, either register for anonymous users or edit profile for registered users... Normally you may define a simple widget to do this. But I preferred a much simpler way. You will see a couple of list items there. First is to the registration page, the other is to the edit profile page. Both are set as hidden with style definition: "*display:none* ". Bold parts are comming from my customized multilingual registry. I have another javascript on the same page:
 
-```
+```js
 dojo.addOnLoad(function() {
         dojo.byId("lugRegisterLink").style.display=q_BaseLoader.user.userName=="Anonymous"?"":"none";
         dojo.byId("lugProfileLink").style.display=q_BaseLoader.user.userName=="Anonymous"?"none":"";
 });
 ```
-
-<br />
 
 <br />
 

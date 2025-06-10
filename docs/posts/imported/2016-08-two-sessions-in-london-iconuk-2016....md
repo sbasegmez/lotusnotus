@@ -40,8 +40,5 @@ The second session is about a topic I wanted to share for a while. As an hot top
 > *Serdar Basegmez**/ Friday, 16th September 11:00 - 11:45 (Room 1)*
 > XPages provides a great application development platform, combining the power of the IBM Domino server with a modern Java-based architecture. While this unique combination creates a whole new world of possibilities, we still need more capabilities, especially regarding the ongoing trend where the front-end and the back-end architecture are changing. Your boss and your users expect great user experiences - period. In this new paradigm, you have a new mission: Integrate your existing application data and business logic with a new front-end. Luckily, we have a great gadget hidden in our toolbox: Apache Wink Servlets, which gives you the power to design RESTful services for your Domino applications with only few lines of code. This session will equip you with the skills and techniques to use this hidden gem and help you to understand the advantage of Wink servlets.
 
-<br />
-
-<br />
 
 See you soon!

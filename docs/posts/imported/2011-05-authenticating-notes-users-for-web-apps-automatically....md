@@ -36,7 +36,7 @@ Before I explain the solution, I want to thank [Tim Tripcony](http://www.timtrip
 
 We first develop a redirector agent for general purposes. We may use a web agent (lotusscript) for this. I used an XPage for simplicity. It basically takes two parameters. 'token' parameter takes the hashed LTPAToken string and 'url' parameter is used for target url. Let's see what it does:
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core">
 
@@ -57,9 +57,6 @@ facesContext.getExternalContext().redirect(rUrl)
 </xp:view>
 ```
 
-<br />
-
-<br />
 
 Here, be careful about the domain parameter at the cookie setting. We may lookup this from the server but there is no need to create a lookup cost, so type in manually...
 
@@ -67,7 +64,7 @@ Now, suppose we have an application and we need to send the user to a web applic
 
 We need to create a session token for this implementation. We will use "session.getSessionToken()" method for this. Unfortunately it is not provided in Lotusscript classes. So we will be using a Java agent for this. The code is here:
 
-```
+```java
 public void NotesMain() {
 
       try {
@@ -94,16 +91,13 @@ public void NotesMain() {
 }
 ```
 
-<br />
-
-<br />
 
 We need to pass the token we created back to the caller. So we are using a NotesDocument here. If anything goes wrong, we will return an error message back.
 
 Now let's look at how we are using:
 
-```
-       Dim session As New NotesSession
+```vbscript
+      Dim session As New NotesSession
       Dim ws As New NotesUIWorkspace        
       Dim dbcurrent As NotesDatabase
       Dim agent As NotesAgent
@@ -128,9 +122,6 @@ Now let's look at how we are using:
       End If
 ```
 
-<br />
-
-<br />
 
 Here '**/test/redirect.nsf/redirect.xsp** ' is the xpages URI we created before. '**TestAuth** ' is the name of the Java agent.
 

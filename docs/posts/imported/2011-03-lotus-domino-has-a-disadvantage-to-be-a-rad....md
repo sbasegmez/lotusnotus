@@ -43,6 +43,3 @@ This was a good benchmarking for rapid application development...
 
 ###### P.S. It is just a coincidence that I posted this entry on the same day with Jake... Curious? [Click here](http://www.codestore.net/store.nsf/unid/BLOG-20110324-0531)...
 
-<br />
-
-<br />
