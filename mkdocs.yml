@@ -90,6 +90,7 @@ plugins:
         rss_created: rss.xml
         rss_updated: rss-updated.xml
       image: https://lotusnotus.com/images/meta/ln_logo_large.png
+      use_git: false
       date_from_meta:
         as_creation: date
       categories:
@@ -99,7 +100,6 @@ plugins:
         utm_source: "feed"
         utm_medium: "RSS"
         utm_campaign: "feed-syndication"
-      use_git: false
   - privacy:
       enabled: true
       concurrency: 1
