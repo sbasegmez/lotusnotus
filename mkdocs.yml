@@ -99,6 +99,7 @@ plugins:
         utm_source: "feed"
         utm_medium: "RSS"
         utm_campaign: "feed-syndication"
+      use_git: false
   - privacy:
       enabled: true
       concurrency: 1
