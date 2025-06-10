@@ -2,7 +2,8 @@ site_name: LotusNotus Blog
 site_url: https://lotusnotus.com
 site_author: Serdar Basegmez
 site_description: >
-  LotusNotus is my personal Blog about IBM/HCL/Lotus Notes, Domino, and related technologies.
+      LotusNotus is Serdar Basegmez's personal blog about 
+      IBM/HCL/Lotus Notes, Domino, and related technologies.
 copyright: >
   Copyright &copy; 2013 - 2025 Serdar Basegmez – <a href="#__consent">Change cookie settings</a>
 repo_name: sbasegmez/lotusnotus
@@ -26,6 +27,8 @@ theme:
     - content.code.copy
     - content.code.select
     - content.code.annotate
+    - navigation.top
+    - navigation.instant
     - toc.integrate
     - search.suggest
     - search.highlight
@@ -81,11 +84,21 @@ plugins:
   - rss:
       enabled: true
       match_path: docs/posts/.*
+      feeds_filenames:
+        json_created: feed.json
+        json_updated: feed-updated.json
+        rss_created: rss.xml
+        rss_updated: rss-updated.xml
+      image: https://lotusnotus.com/images/meta/ln_logo_large.png
       date_from_meta:
         as_creation: date
       categories:
         - categories
         - tags
+      url_parameters:
+        utm_source: "feed"
+        utm_medium: "RSS"
+        utm_campaign: "feed-syndication"
   - privacy:
       enabled: true
       concurrency: 1
