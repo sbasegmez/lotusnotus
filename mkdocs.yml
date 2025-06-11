@@ -102,7 +102,7 @@ plugins:
         utm_campaign: "feed-syndication"
   - privacy:
       enabled: true
-      concurrency: 1
+      concurrency: 2
       cache: true
       assets: true
       assets_fetch: true
