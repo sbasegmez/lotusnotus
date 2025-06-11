@@ -1,3 +1,8 @@
+# Generic
+/en / 301
+/tr https://tr.lotusnotus.com 301
+
+# English articles
 /lotusnotus_en.nsf/dx/daos-may-not-be-efficient-sometimes.htm /2010/03/daos-may-not-be-efficient-sometimes/ 301
 /lotusnotus_en.nsf/dx/id-vault-uploaddownload-problems.htm /2010/03/id-vault-uploaddownload-problems/ 301
 /lotusnotus_en.nsf/dx/lotus-notesdomino-8.5.2-is-coming-a-blogroll-wrap-up....htm /2010/04/lotus-notesdomino-8.5.2-is-coming-a-blogroll-wrap-up.../ 301
@@ -421,3 +426,8 @@
 /lotusnotus.nsf/dx/orlandodan-kurkcu-dukkanina-donus....htm https://tr.lotusnotus.com/2014/02/orlandodan-kurkcu-dukkanina-donus.../ 301
 /lotusnotus.nsf/dx/dtfc-beserdir-sasar-gelistirici-de-insandir-unutur....htm https://tr.lotusnotus.com/2015/10/dtfc-beserdir-sasar-gelistirici-de-insandir-unutur.../ 301
 /lotusnotus.nsf/dx/iki-yeni-sunum-daha...-engage-2015-ve-icon-uk-2015....htm https://tr.lotusnotus.com/2015/10/iki-yeni-sunum-daha...-engage-2015-ve-icon-uk-2015.../ 301
+
+# Rest of it
+/lotusnotus.nsf/* https://tr.lotusnotus.com 301
+/lotusnotus_en.nsf/* / 301
+
