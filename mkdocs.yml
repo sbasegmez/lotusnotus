@@ -47,6 +47,9 @@ extra:
       - accept
       - reject
   social:
+    - icon: material/rss
+      name: RSS Feed
+      link: https://lotusnotus.com/rss.xml
     - icon: fontawesome/brands/github
       name: Serdar Basegmez on GitHub
       link: https://github.com/sbasegmez
