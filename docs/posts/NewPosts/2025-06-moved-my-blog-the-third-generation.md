@@ -2,7 +2,6 @@
 title: "Moved my blog: The third generation!"
 slug: moved-blog-third-generation
 date: 2025-06-12T10:18:30.824Z
-draft: true
 tags:
     - blogging
     - mkdocs
@@ -12,7 +11,7 @@ categories:
 
 It's been four years since my last blog post. Even back then, I mostly just shared a slide deck or a few brief updates — so I haven’t really blogged properly for nearly a decade.
 <!-- more -->
-I wouldn’t go as far as saying '*I’m back*' just yet. But over the past couple of years, sticking with Domino Blog gave me a convenient excuse to keep putting off the next post. To be clear, I’ve always liked the Domino Blog design — it’s a brilliantly built and very capable NSF design. I even spent a few hours over a beer [giving the blog a facelift with Bootstrap](../imported/2013-11-change-is-good....md), and ended up sharing that template with dozens of others. The issue isn’t with the blog template itself, but sadly with Notes. I won’t go into all the details, but the keywords are 'macOS on ARM' and 'Notes Rich Text Format'.
+I wouldn’t go as far as saying '*I’m back*' just yet. But over the past couple of years, sticking with Domino Blog gave me a convenient excuse to keep putting off the next post. To be clear, I’ve always liked the Domino Blog design — it’s a brilliantly built and very capable NSF design. I even spent a few hours over a beer [giving the blog a facelift with Bootstrap](../imported/2013-11-change-is-good....md), and ended up sharing that template with dozens of others. The issue isn’t with the blog template itself, but sadly with Notes. I won’t articulate this further, but the keywords are 'macOS on ARM' and 'Notes Rich Text Format'.
 
 Meanwhile, static site generators have always been on my radar. I'd used MkDocs before for documentation. More recently, after a brief chat with [Paul Withers](https://paulswithers.github.io/), I decided to move my blog to [MkDocs Material](https://squidfunk.github.io/mkdocs-material/). And here we are...
 
