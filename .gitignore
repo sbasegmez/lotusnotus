@@ -164,3 +164,7 @@ cython_debug/
 # Visual Studio Code
 .vscode/
 *.code-workspace
+
+# Front Matter plugin
+.frontmatter/
+frontmatter.json
