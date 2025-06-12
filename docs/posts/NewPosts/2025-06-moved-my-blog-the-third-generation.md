@@ -1,5 +1,7 @@
 ---
 title: "Moved my blog: The third generation!"
+description: >
+    Moved my blog to MkDocs Material for simplicity and flexibility. All posts migrated, new workflow set up, and archives preserved for future reference.
 slug: moved-blog-third-generation
 date: 2025-06-12T10:18:30.824Z
 tags:
