@@ -2,7 +2,7 @@ site_name: LotusNotus Blog
 site_url: https://lotusnotus.com
 site_author: Serdar Basegmez
 site_description: >
-      LotusNotus is Serdar Basegmez's personal blog about 
+      LotusNotus is Serdar Basegmez's personal blog about
       IBM/HCL/Lotus Notes, Domino, and related technologies.
 copyright: >
   Copyright &copy; 2013 - 2025 Serdar Basegmez – <a href="#__consent">Change cookie settings</a>
@@ -14,7 +14,7 @@ theme:
   language: en
   icon:
     repo: material/github
-  palette: 
+  palette:
     scheme: default
     primary: white
     accent: deep orange
@@ -38,10 +38,10 @@ extra_css:
 extra:
   consent:
     title: Cookie consent
-    description: >- 
-      We use cookies to recognise your repeat visits and preferences, 
-      and to help us understand how our blog is performing. 
-      We may use third-party tools for this purpose. With your consent, 
+    description: >-
+      We use cookies to recognise your repeat visits and preferences,
+      and to help us understand how our blog is performing.
+      We may use third-party tools for this purpose. With your consent,
       you’re helping us improve the experience for all our readers.
     actions:
       - accept
@@ -112,6 +112,8 @@ plugins:
   - search:
       lang: en
       separator: '[\s\-]+'
+  - social:
+      enabled: true
   - tags:
       enabled: true
 
@@ -132,4 +134,3 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.superfences
   - pymdownx.blocks.caption
-  
