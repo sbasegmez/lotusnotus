@@ -25,6 +25,24 @@
 }
 /************/
 
+/* Short profile bio beneath the left-sidebar author card */
+.md-post__authors .md-profile__bio {
+  color: var(--md-default-fg-color--light);
+  font-size: .7rem;
+  line-height: 1.45;
+  margin: .55rem 0 0;
+}
+
+.md-post__authors .md-profile__bio > :first-child {
+  margin-top: 0;
+}
+
+.md-post__authors .md-profile__bio > :last-child {
+  margin-bottom: 0;
+}
+
+/************/
+
 /* Header and nav social: */
 .md-header__social {
   display:none;
